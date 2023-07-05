@@ -1,9 +1,13 @@
-# zephyr-pico 
-Zephyr jump-start utilizing the Pico framework
+# Pico
 
-## Intro
+![pico](./doc/image/pico.jpg)
 
-Zephyr is a powerful eco system for embedded application. In comprises an SDK (software development kit), a codebase supporting all kinds of modules from the kernel level, driver layer up to higher level modules like an event queuing system or an MQTT server. Zephyr provides open software supporting various SoCs and SoC architectures, hundreds of elctronic components and embedded boards. The real power of Zephyr comes with the scalability of the real time system, and KCONFIG is the configuration system which allows the flexible configuration of the kernel for each individual embedded application, together with the devicetree system, which is used for representation of each individual hardware board, down to each bus system and electrical component on the board. There is also the Zephyr test environment allowing the definitition of a unit test harness and the execution of automated tests. And finally there are Zephyr manifests which are used to pull version controlled subsystems
-into a project in a well defined way.
 
-If you jump-start into the Zephyr eco system, be prepared that you might get in touch with a lot of unknown animals, and be also prepared that you might need to learn a lot about how to deal with those animals appropriately.
+# What is Pico?
+
+The Pico suite comprises a tiny framework for embedded systems, which decouples application software from the underlying real time operating system (RTOS) by a very thin abstraction layer. In addition, the Pico Suite comes with five tiny sample applications to demonstrate the API usage of the framework.
+
+The Pico API provides some symbol and type definitions, as well as a set of eight API functions, enabling Zephyr novices to get basic tasks easily running on embedded hardware. The API provides the following basics: initializing a console and waiting for console readiness, formatted/colored printing to a console, reading a system clock in microseconds, sleeping for a given number of microseconds, level controlled logging with microsecond timestamps, on/off or toggle control of up to four LEDs, initializing and callback setup for up to four buttons, and button state polling.
+
+Due to its small codebase the Pico framework can be easily adopted to various RTOS types or hardware abstractions (like FreeRTOSTM or STM32CubeMX). In this paper, however, we describe Pico in a pure Zephyr RTOS context. 
+Due to its tiny size Pico is an excellent context for tutorials, as it allows Zephyr novices to get running on embedded boards with Zephyr without exposing the novice to advanced concepts like kernel configuration and device tree magic during the initial learning phase. Once the reader is familiar with building and running of Pico based Zephyr samples, the reader can tackle the advanced Zephyr concepts in subsequent phases.
