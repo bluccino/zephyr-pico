@@ -6,6 +6,6 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(05-picolo)
 add_definitions(-DPROJECT="${CMAKE_PROJECT_NAME}")
 
-set (PICO ../../include/zephyr)
+set (PICO ../../include)
 include_directories(src ${PICO})
 target_sources(app PRIVATE src/main.c)
