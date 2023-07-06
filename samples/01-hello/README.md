@@ -40,11 +40,11 @@ The sample has support for the following boards:
 
 ```
    // main.c - 01-hello
-   #include "pico/api.h"
+   #include "pico/pico.h"
 
    void main(void)
    {
-     pico.print("hello, world\n");
+     print("hello, world\n");
    }
 ```
 
