@@ -1,4 +1,4 @@
-# Sample 05-picolo
+# Sample 05-pico
 
 ## Description
 
@@ -80,7 +80,7 @@ have to be created and located in the `./boards` folder.
 * This sample output is from a nRF52840 dongle. After powering up, the dongle
   waits for a terminal connection while it flashes the (mono-color) status LED.
 * Once the terminal program establishes a connection the system time is reset to
-  zero and the first line is logged by `pico.hello()`, showing project name,
+  zero and the first line is logged by `hello()`, showing project name,
   board identifier and Pico version.
 * Initially the blink sequence is LED @2,@3,@4,@2,@3,@4,@1 ..., which
   translate to the pattern red,green,blue, red,green,blue (R-G-B-R-G-B...) on
@@ -114,22 +114,22 @@ have to be created and located in the `./boards` folder.
 
 ```
    // main.c - 05-picolo
-   #include "pico/api.h"
+   #include "pico/pico.h"
 
    static PI_txt txt[] = {"red","green","blue"};
-   static PI_txt col[] = {PI_R, PI_G, PI_B};
+   static PI_txt col[] = {_R_, _G_, _B_};
    static int index[]  = {0,1, 1,2, 2,0, 0,1,2};
    static int mode = 3;
 
    static void pressed(int i, int on)
    {
-     if (!pico.log(2,"")) {
-       pico.print("button states:");
+     if (!log(2,"")) {
+       print("button states:");
        for (int i=1; i <= 4; i++) {
-         int state = pico.poll(i);
-         pico.print(" %0d",state);
+         int state = poll(i);
+         print(" %0d",state);
        }
-       pico.print("\n");
+       print("\n");
      }
      if (on && i == 1) mode = (mode+1) % 4;
        else if (on) mode = (i-2) % 4;
@@ -137,20 +137,20 @@ have to be created and located in the `./boards` folder.
 
    void main(void)
    {
-     for(;pico.log(0,NULL);pico.sleep(250*1000))
-       pico.led(1,-1); // blink until console ready
+     for(;log(0,NULL);sleep(250*1000))
+       led(1,-1); // blink until console ready
 
-     pico.hello(4,""); // verbose level, hello msg
-     pico.button(pressed); // init/setup button cb
+     hello(4,""); // verbose level, hello msg
+     button(pressed); // init/setup button cb
 
      PI_us time = 0;
 	   for (int i=0;; i++, time += 500*1000)
      {
-       pico.sleep(time-pico.us());
+       sleep(time-us());
        int k = index[2*mode + i % (mode==3?3:2)];
-       pico.log(1,"%s%s",col[k],txt[k]);
-       pico.led(-1,0);    // all LEDs off
-       pico.led(2+k,1);   // one LED on
+       log(1,"%s%s",col[k],txt[k]);
+       led(-1,0);    // all LEDs off
+       led(2+k,1);   // one LED on
      }
    }
 ```

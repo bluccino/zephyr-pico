@@ -2,7 +2,7 @@
 #ifndef __PICO_API_H__
 #define __PICO_API_H__
 
-#include "pico/rtos.h"  // iclude first!
+#include "pico/rtos.h"  // include first!
 
 #ifdef __cplusplus
 extern "C" {
